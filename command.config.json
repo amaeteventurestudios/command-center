@@ -1,0 +1,29 @@
+{
+  "$comment": "Your spaces and projects. Use the same project names as your Claude projects, so each thread lands under the project it lives in. See README.md.",
+  "spaces": [
+    {
+      "id": "work",
+      "title": "Work",
+      "name": "Your company",
+      "accent": "#c2410c",
+      "accentDark": "#f26a3d",
+      "projects": ["Website", "Mobile app", "Research"],
+      "githubOwners": ["your-company-org"],
+      "hosts": []
+    },
+    {
+      "id": "side",
+      "title": "Side projects",
+      "name": "Side projects",
+      "accent": "#0369a1",
+      "accentDark": "#7cc7ff",
+      "projects": ["Blog", "Game", "Experiments"],
+      "githubOwners": [],
+      "hosts": []
+    }
+  ],
+  "repoHome": {
+    "my-dotfiles": { "space": "side", "project": "Experiments" }
+  },
+  "fallback": { "space": "side", "project": "Experiments" }
+}

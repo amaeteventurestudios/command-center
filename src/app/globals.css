@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Light: plain white, neutral greys (shadcn neutral). */
+:root {
+  --background: #ffffff;
+  --foreground: #18181b;
+  --sidebar: #fafafa;
+  --card: #ffffff;
+  --muted: #f4f4f5;
+  --muted-foreground: #52525b;
+  --border: #e4e4e7;
+  --input: #e4e4e7;
+  --hover: #f1f1f3;
+  --active: #ebebee;
+  --ring: #4c7dff;
+  --ok: #1e8a4c;
+  --warn: #9a7400;
+  --bad: #c2412d;
+  --radius: 0.625rem;
+  --accent: #2f5bd3;
+  --accent-foreground: #ffffff;
+  --accent-soft: #f1f5ff;
+  --accent-line: #c9d6fa;
+}
+
+/* Dark: jet black. */
+.dark {
+  --background: #000000;
+  --foreground: #ededef;
+  --sidebar: #050505;
+  --card: #0b0b0c;
+  --muted: #111113;
+  --muted-foreground: #a1a1a8;
+  --border: #1f1f23;
+  --input: #1f1f23;
+  --hover: #121214;
+  --active: #18181b;
+  --ring: #8fb0ff;
+  --ok: #5fcb8e;
+  --warn: #e8c14a;
+  --bad: #ff8a7a;
+  --accent-foreground: #000000;
+}
+
+/* Space accents come from command.config.json, set as --space-accent / --space-accent-dark on the page. */
+[data-space] { --accent: var(--space-accent); --accent-soft: color-mix(in oklab, var(--space-accent) 7%, white); --accent-line: color-mix(in oklab, var(--space-accent) 30%, white); --ring: var(--space-accent); }
+.dark [data-space] { --accent: var(--space-accent-dark); --accent-soft: color-mix(in oklab, var(--space-accent-dark) 8%, black); --accent-line: color-mix(in oklab, var(--space-accent-dark) 30%, black); --ring: var(--space-accent-dark); }
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-sidebar: var(--sidebar);
+  --color-card: var(--card);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-hover: var(--hover);
+  --color-active: var(--active);
+  --color-ring: var(--ring);
+  --color-ok: var(--ok);
+  --color-warn: var(--warn);
+  --color-bad: var(--bad);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-line: var(--accent-line);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@layer base {
+  * { border-color: var(--border); }
+  html { color-scheme: light; }
+  html.dark { color-scheme: dark; }
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-geist-sans), system-ui, sans-serif;
+  }
+  :focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+}
+
+/* Big screens: show the 1920 layout larger (house rule). */
+@media (min-width: 2200px) { html { zoom: 1.2; } }
+@media (min-width: 2500px) { html { zoom: 1.33; } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
