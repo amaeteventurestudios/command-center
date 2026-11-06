@@ -12,6 +12,7 @@ If you run many Claude projects at once, each with several threads, it's hard to
 - **Spaces**, such as your company and your side projects, each with its own projects and colour. One host can show all of them with a switch, or a host can show just one.
 - **GitHub watch.** Pull requests that Claude opens (from `claude/` branches) show up as cards by themselves, under the right project. Merged ones move to Done. A Refresh button checks GitHub again on demand.
 - **Email, optional.** Add IMAP mailboxes and see only mail from people, tagged by project. Opening a message never marks it read. You can reply from the dashboard, and it lists the people you wrote to who haven't replied yet.
+- **Installable app.** Install it from the top bar and it runs in its own window with its own icon on Mac, Windows, iPhone and Android, so closing the browser doesn't close it.
 - **Deadlines, quick capture and server health** for the machine it runs on, plus "is it up" checks for others.
 
 It's a small self-hosted Next.js app. Everything you add stays in one Docker volume on your own server. There is no database and no outside service.

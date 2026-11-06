@@ -1,5 +1,6 @@
 "use client";
 
+import { InstallApp } from "./install-app";
 import * as React from "react";
 import { useTheme } from "next-themes";
 import { LayoutGrid, Kanban, Mail, Users, Moon, Sun, Plus, CircleDot, Trash2 } from "lucide-react";
@@ -157,6 +158,7 @@ export function Dashboard({ spaces }: { spaces: SpaceId[] }) {
           </label>
           <Button type="submit">Add</Button>
         </form>
+        <InstallApp />
         <ThemeToggle />
         <span className="flex items-center gap-2 font-mono text-xs text-muted-foreground">
           <span className="size-1.5 rounded-full bg-ok" aria-hidden /> {liveOn ? "Live email" : "Email not connected"}
