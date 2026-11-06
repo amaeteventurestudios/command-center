@@ -227,8 +227,19 @@ There is no button on the board that can wake Claude: claude.ai has no public AP
 
 - **Space switch** (Work, Side projects…) shows one space at a time. Each space has its own colour.
 - **Capture an idea** saves a quick note to "Follow-ups and captured" on the glance page.
+- **Install app** puts the board in its own window with its own icon (see below). It disappears once you're using the installed app.
 - **Sun/moon button** switches between light and dark.
 - **Email status** says whether a mailbox is connected.
+
+### Install it as an app
+
+The board can run as its own app, so it stays open when you close your browser and has its own icon in the Dock, taskbar or home screen. Press **Install app** in the top bar, or:
+
+- **Safari on Mac:** File, then Add to Dock.
+- **Chrome or Edge:** the install icon at the right of the address bar.
+- **iPhone or iPad:** Share, then Add to Home Screen. **Android:** the browser menu, then Install app.
+
+It's the same board, not a copy: it updates itself every time you deploy, and nothing extra is stored on your device. If the connection drops, it shows a short "you're offline" page and reloads by itself when you're back. If your board sits behind a login proxy, the app signs in the same way the browser does.
 
 ### The left side
 
