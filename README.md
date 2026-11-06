@@ -16,6 +16,8 @@ It's a small self-hosted Next.js app. Everything you add stays in one Docker vol
 
 > Command Center is an independent project. It is not made by or affiliated with Anthropic.
 
+**New here? Read the [full guide](docs/guide.md):** install, connect your Claude projects, and every part of the screen, step by step.
+
 ## How threads get on the board
 
 Claude has no public API for your projects and threads, so the threads report themselves. You paste a short instruction into each Claude project (see [docs/thread-instructions.md](docs/thread-instructions.md)), and its threads post their card to `/api/report` whenever they start, need you or finish. That address takes a secret key, and it can only add or move a card.
