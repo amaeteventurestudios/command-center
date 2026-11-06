@@ -32,6 +32,16 @@ Sync the command center board now in a new thread.
 
 The cards show up under that project within a minute.
 
+## 4. Optional: a scheduled sync
+
+Threads only report when they wake up. To keep quiet threads in the right column without visiting each project, send this in each project's main chat once:
+
+```
+Start a thread that syncs the command center board, and set it up as a scheduled task that repeats the sync every 3 hours.
+```
+
+Each run uses a little Claude usage, so every 3 or 4 hours is plenty. Nothing on the board itself can wake Claude, because claude.ai has no public API for starting a chat from outside. The board's Refresh button only re-checks GitHub for pull requests.
+
 ## What the board accepts
 
 `POST /api/report` with `Authorization: Bearer <REPORT_TOKEN>` and a JSON body:

@@ -152,3 +152,13 @@ export function claudePrs(): Promise<FoundPr[]> {
   cache = { at: Date.now(), value };
   return value;
 }
+
+/**
+ * The board's Refresh button: drops the five-minute cache and scans GitHub again.
+ * Clicks within 30 seconds of the last scan reuse it, so the GitHub quota stays safe.
+ */
+export function refreshPrs(): Promise<FoundPr[]> {
+  if (cache && Date.now() - cache.at < 30_000) return cache.value;
+  cache = null;
+  return claudePrs();
+}
