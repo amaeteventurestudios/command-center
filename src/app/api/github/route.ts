@@ -1,12 +1,19 @@
 // GitHub tokens for the board's PR watch. GET says which accounts are connected
-// (never the tokens themselves); POST adds one after GitHub accepts it; DELETE removes one.
+// (never the tokens themselves); POST adds one after GitHub accepts it; DELETE removes one;
+// PUT scans GitHub again now instead of waiting for the five-minute cache.
 import { NextResponse } from "next/server";
-import { addToken, claudePrs, listTokens, removeToken } from "@/lib/github-watch";
+import { addToken, claudePrs, listTokens, refreshPrs, removeToken } from "@/lib/github-watch";
 
 export async function GET() {
   const { tokens, server } = await listTokens();
   const prs = tokens.length || server ? await claudePrs() : [];
   return NextResponse.json({ tokens, server, prs: prs.length, repos: new Set(prs.map((p) => p.repo)).size });
+}
+
+export async function PUT() {
+  const { tokens, server } = await listTokens();
+  const prs = tokens.length || server ? await refreshPrs() : [];
+  return NextResponse.json({ tokens, server, prs: prs.length, repos: new Set(prs.map((p) => p.repo)).size, at: new Date().toISOString() });
 }
 
 export async function POST(req: Request) {

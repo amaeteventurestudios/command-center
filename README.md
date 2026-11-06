@@ -10,7 +10,7 @@ If you run many Claude projects at once, each with several threads, it's hard to
 
 - **Working**, **Up next**, **Waiting on you**, **Idle** (with how many days) and **Done**, for every project.
 - **Spaces**, such as your company and your side projects, each with its own projects and colour. One host can show all of them with a switch, or a host can show just one.
-- **GitHub watch.** Pull requests that Claude opens (from `claude/` branches) show up as cards by themselves, under the right project. Merged ones move to Done.
+- **GitHub watch.** Pull requests that Claude opens (from `claude/` branches) show up as cards by themselves, under the right project. Merged ones move to Done. A Refresh button checks GitHub again on demand.
 - **Email, optional.** Add IMAP mailboxes and see only mail from people, tagged by project. Opening a message never marks it read. You can reply from the dashboard, and it lists the people you wrote to who haven't replied yet.
 - **Deadlines, quick capture and server health** for the machine it runs on, plus "is it up" checks for others.
 

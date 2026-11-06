@@ -207,6 +207,18 @@ Sync the command center board now in a new thread.
 
 Within a minute, that project's threads appear on the board. From then on, each thread updates its own card when it starts, needs you, or finishes.
 
+### Step 4 (optional). Keep it in step without asking
+
+A thread only reports when it wakes up, so a thread that went quiet can sit in the wrong column. To stop having to visit each project and ask for a sync, give each project a scheduled sync. In that project's main chat, send:
+
+```
+Start a thread that syncs the command center board, and set it up as a scheduled task that repeats the sync every 3 hours.
+```
+
+From then on, Claude lists that project's threads and updates the board on its own, every three hours. Each run uses a little of your Claude usage, so every 3 or 4 hours is a better fit than hourly. You can see, pause or delete these in your scheduled tasks.
+
+There is no button on the board that can wake Claude: claude.ai has no public API that lets an outside site start a chat in your projects. The board's **Refresh** button (see GitHub below) updates pull request cards straight away; thread cards come from the threads and the scheduled sync.
+
 ---
 
 ## Part 3: Using the board
@@ -274,6 +286,8 @@ When Claude opens a pull request (its branches start with `claude/`), it can sho
 5. On the board, open **Board → Connect GitHub**, paste it, and save.
 
 Make one token per owner. For example, one for your personal account and one for your company organisation. Tokens stay on your server and are never shown again. The board checks GitHub every five minutes and looks at repos with activity in the last three weeks.
+
+To see a pull request that was opened or merged a moment ago, press **Refresh** next to the GitHub line on the board. It checks GitHub again straight away instead of waiting for the next five-minute check. Presses within 30 seconds of the last check reuse it, to stay inside GitHub's rate limit.
 
 How a pull request finds its project: the repo name is matched to a project name. `website-app` matches "Website". If nothing matches, `repoHome` and `githubOwners` in your config decide where it goes, and then `fallback`.
 

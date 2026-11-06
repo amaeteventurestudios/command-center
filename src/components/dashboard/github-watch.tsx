@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { GitPullRequest, X } from "lucide-react";
+import { GitPullRequest, RefreshCw, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -14,6 +14,8 @@ export function GithubWatch({ onChanged }: { onChanged: () => void }) {
   const [token, setToken] = React.useState("");
   const [busy, setBusy] = React.useState(false);
   const [problem, setProblem] = React.useState<string | null>(null);
+  const [refreshing, setRefreshing] = React.useState(false);
+  const [refreshed, setRefreshed] = React.useState<string | null>(null);
 
   const load = React.useCallback(() => {
     fetch("/api/github", { cache: "no-store" }).then((r) => (r.ok ? r.json() : null)).then((d) => d && setInfo(d)).catch(() => {});
@@ -36,6 +38,18 @@ export function GithubWatch({ onChanged }: { onChanged: () => void }) {
     load();
   };
 
+  // Scans GitHub again now, then reloads the cards, so a PR opened or merged a minute ago shows up.
+  const refresh = async () => {
+    setRefreshing(true);
+    try {
+      const r = await fetch("/api/github", { method: "PUT" });
+      const d = r.ok ? await r.json().catch(() => null) : null;
+      if (d) setInfo(d);
+      onChanged();
+      setRefreshed(d ? new Date().toLocaleTimeString([], { hour: "numeric", minute: "2-digit" }) : null);
+    } catch { setRefreshed(null); } finally { setRefreshing(false); }
+  };
+
   if (!info) return null;
   const on = info.server || info.tokens.length > 0;
   return (
@@ -50,6 +64,12 @@ export function GithubWatch({ onChanged }: { onChanged: () => void }) {
             <button type="button" aria-label={`Stop watching as ${t.login}`} onClick={() => remove(t.id, t.login)} className="cursor-pointer rounded text-muted-foreground hover:text-foreground focus-visible:outline-2 focus-visible:outline-ring"><X className="size-3" /></button>
           </span>
         ))}
+        {on && (
+          <Button size="sm" variant="outline" onClick={refresh} disabled={refreshing} aria-live="polite">
+            <RefreshCw className={`size-3.5${refreshing ? " animate-spin motion-reduce:animate-none" : ""}`} aria-hidden />
+            {refreshing ? "Refreshing" : refreshed ? `Refreshed ${refreshed}` : "Refresh"}
+          </Button>
+        )}
         {!adding && <Button size="sm" variant="outline" onClick={() => setAdding(true)}>{on ? "Add another account" : "Connect GitHub"}</Button>}
       </div>
       {adding && (
