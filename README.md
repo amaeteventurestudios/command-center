@@ -4,7 +4,7 @@ One calm screen for everything your Claude threads are doing.
 
 If you run many Claude projects at once, each with several threads, it's hard to see which ones are working, which are waiting on you, and which have gone quiet. Command Center puts every thread on a board, under the same project it lives in on Claude, with how long it has sat there.
 
-![The board: Now, Waiting on you and Idle cards from Claude threads, grouped by project](docs/screenshot.png)
+![Command Center in use: moving a thread to Waiting on you, opening a project, switching spaces and light mode](docs/demo.gif)
 
 - **Working**, **Up next**, **Waiting on you**, **Idle** (with how many days) and **Done**, for every project.
 - **Spaces**, such as your company and your side projects, each with its own projects and colour. One host can show all of them with a switch, or a host can show just one.
