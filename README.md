@@ -6,6 +6,8 @@ If you run many Claude projects at once, each with several threads, it's hard to
 
 ![Command Center in use: moving a thread to Waiting on you, opening a project, switching spaces and light mode](docs/demo.gif)
 
+[Watch the demo as video (MP4)](docs/demo.mp4)
+
 - **Working**, **Up next**, **Waiting on you**, **Idle** (with how many days) and **Done**, for every project.
 - **Spaces**, such as your company and your side projects, each with its own projects and colour. One host can show all of them with a switch, or a host can show just one.
 - **GitHub watch.** Pull requests that Claude opens (from `claude/` branches) show up as cards by themselves, under the right project. Merged ones move to Done.
